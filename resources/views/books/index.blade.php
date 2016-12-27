@@ -21,7 +21,7 @@
                     <tr>
                         <td>{{ $book->id }}</td>
                         <td>{{ $book->title }}</td>
-                        <td>{{ $book->price }}</td>
+                        <td>R$  {{  $book->price }}</td>
                         <td>
                             <ul class="list-inline">
                                 <li>

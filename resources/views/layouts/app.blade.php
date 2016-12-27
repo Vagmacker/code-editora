@@ -36,14 +36,19 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Code-Editora
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <a class="navbar-brand" href="{{ route('categories.index') }}">
+                            Categories
+                        </a>
+                        <a class="navbar-brand" href="{{ route('books.index') }}">
+                            Books
+                        </a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -77,7 +82,11 @@
                 </div>
             </div>
         </nav>
-
+        @if(Session::has('message'))
+            <div class="container">
+                {!! Alert::success(Session::get('message'))->close() !!}
+            </div>
+        @endif
         @yield('content')
     </div>
 

@@ -9,20 +9,23 @@
                     'route' => ['books.update', 'book' => $book->id
                     ], 'class' => 'form', 'method' => 'PUT']) !!}
 
-            <div class="form-group">
-                {!! Form::label('title', 'Title') !!}
+            {!! Html::openFormGroup('title', $errors) !!}
+                {!! Form::label('title', 'Title', ['class' => 'control-label']) !!}
                 {!! Form::text('title', null, ['class' => 'form-control']) !!}
-            </div>
+                {!! Form::error('title', $errors) !!}
+            {!! Html::closeFormGroup() !!}
 
-            <div class="form-group">
-                {!! Form::label('subtitle', 'Subtitle') !!}
+            {!! Html::openFormGroup('subtitle', $errors) !!}
+                {!! Form::label('subtitle', 'Subtitle', ['class' => 'control-label']) !!}
                 {!! Form::text('subtitle', null, ['class' => 'form-control']) !!}
-            </div>
+                {!! Form::error('subtitle', $errors) !!}
+            {!! Html::closeFormGroup() !!}
 
-            <div class="form-group">
-                {!! Form::label('price', 'Price') !!}
-                {!! Form::number ('price', null, ['class' => 'form-control']) !!}
-            </div>
+            {!! Html::openFormGroup('price', $errors) !!}
+                {!! Form::label('price', 'Price', ['class' => 'control-label']) !!}
+                {!! Form::text('price', null, ['class' => 'form-control']) !!}
+                {!! Form::error('price', $errors) !!}
+            {!! Html::closeFormGroup() !!}
 
             <div class="form-group">
                 {!! Form::submit('Save Book', ['class' => 'btn btn-primary']) !!}

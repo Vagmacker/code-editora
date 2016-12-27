@@ -9,13 +9,16 @@
                     'route' => ['categories.update', 'category' => $category->id
                     ], 'class' => 'form', 'method' => 'PUT']) !!}
 
-            <div class="form-group">
-                {!! Form::label('name', 'Name') !!}
+            {!! Html::openFormGroup('name', $errors) !!}
+                {!! Form::label('name', 'Name', ['class' => 'control-label']) !!}
                 {!! Form::text('name', null, ['class' => 'form-control']) !!}
-            </div>
+                {!! Form::error('name', $errors) !!}
+            {!! Html::closeFormGroup() !!}
+
             <div class="form-group">
-                {!! Form::submit('Save Category', ['class' => 'btn btn-primary']) !!}
+                {!! Button::primary('Salvar categoria')->submit() !!}
             </div>
+
             {!! Form::close() !!}
         </div>
     </div>

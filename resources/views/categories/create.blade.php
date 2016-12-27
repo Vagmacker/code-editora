@@ -4,16 +4,20 @@
     <div class="container">
         <div class="row">
             <h3>New Category</h3>
-
             {!! Form::open(['route' => 'categories.store', 'class' => 'form']) !!}
 
-            <div class="form-group">
-                {!! Form::label('name', 'Name') !!}
+            {!! Form::hidden('redirect_to', URL::previous()) !!}
+
+            {!! Html::openFormGroup('name', $errors) !!}
+                {!! Form::label('name', 'Name', ['class' => 'control-label']) !!}
                 {!! Form::text('name', null, ['class' => 'form-control']) !!}
-            </div>
+                {!! Form::error('name', $errors) !!}
+            {!! Html::closeFormGroup() !!}
+
             <div class="form-group">
-                {!! Form::submit('Create Category', ['class' => 'btn btn-primary']) !!}
+                {!! Button::primary('Criar categoria')->submit() !!}
             </div>
+
             {!! Form::close() !!}
         </div>
     </div>
