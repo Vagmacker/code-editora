@@ -14,8 +14,10 @@ class BookRequest extends FormRequest
      */
     public function authorize()
     {
-        $book = Book::find($this->route('books'));
-        return $book and $this->user()->can('update', $book);
+        $book = $this->route('book');
+        $userId = $book ? $book->user_id : \Auth::user()->id;
+        $checkPerm = ($userId == \Auth::user()->id) ? true : false;
+        return $checkPerm;
     }
 
     /**

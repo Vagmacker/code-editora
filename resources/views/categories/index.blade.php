@@ -6,8 +6,9 @@
             <h3>List of Categories</h3>
             {!! Button::primary('New Category')->asLinkTo(route('categories.create')) !!}
         </div>
+        <br>
         <div class="row">
-            <table class="table table-striped">
+            <table class="table table-striped table-bordered">
                 <thead>
                 <tr>
                     <th>ID</th>

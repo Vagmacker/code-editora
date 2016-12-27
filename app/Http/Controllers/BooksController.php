@@ -32,7 +32,8 @@ class BooksController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     *
+     * @param BookRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(BookRequest $request)
@@ -56,7 +57,8 @@ class BooksController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     *
+     * @param BookRequest $request
      * @param Book $book
      * @return \Illuminate\Http\Response
      * @internal param int $id

@@ -4,10 +4,11 @@
     <div class="container">
         <div class="row">
             <h3>List of Books</h3>
-            <a href="{{ route('books.create') }}" class="btn btn-primary">Create Book</a>
+            <a href="{{ route('books.create') }}" class="btn btn-primary">New Book</a>
         </div>
+        <br>
         <div class="row">
-            <table class="table table-striped">
+            <table class="table table-striped table-bordered">
                 <thead>
                 <tr>
                     <th>ID</th>
