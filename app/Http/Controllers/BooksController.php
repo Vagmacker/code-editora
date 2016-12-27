@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace CodePub\Http\Controllers;
 
-use App\Book;
-use App\Http\Requests\BookRequest;
+use CodePub\Models\Book;
+use CodePub\Http\Requests\BookRequest;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -39,7 +39,9 @@ class BooksController extends Controller
     public function store(BookRequest $request)
     {
         Book::create($request->all());
-        return redirect()->route('books.index');
+        $url = $request->get('redirect_to', route('books.index'));
+        $request->session()->flash('message', 'Livro cadastrada com sucesso.');
+        return redirect()->to($url);
     }
 
     /**
@@ -67,7 +69,9 @@ class BooksController extends Controller
     {
         $book->fill($request->all());
         $book->save();
-        return redirect()->route('books.index');
+        $url = $request->get('redirect_to',  route('books.index'));
+        $request->session()->flash('message', 'Livro alterado com sucesso.');
+        return redirect()->to($url);
     }
 
     /**
