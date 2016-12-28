@@ -14,8 +14,8 @@ class AddRelationshipWithUser extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('author_id')->unsigned();
+            $table->foreign('author_id')->references('id')->on('users');
         });
     }
 
@@ -27,7 +27,7 @@ class AddRelationshipWithUser extends Migration
     public function down()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->dropColumn('user_id');
+            $table->dropColumn('author_id');
         });
     }
 }

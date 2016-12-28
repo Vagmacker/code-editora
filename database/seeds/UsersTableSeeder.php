@@ -11,9 +11,14 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\CodePUb\Models\User::class, 1)->create([
+        factory(\CodePub\Models\User::class, 1)->create([
             'name' => 'Joao Vagmacker',
             'email' => 'joao.vagmacker@editora.com'
+        ]);
+
+        factory(\CodePub\Models\User::class, 1)->create([
+            'name' => 'Jose Vitor',
+            'email' => 'josev@editora.com'
         ]);
     }
 }

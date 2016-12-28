@@ -5,8 +5,9 @@ namespace CodePub\Http\Requests;
 use CodePub\Book;
 use Illuminate\Foundation\Http\FormRequest;
 
-class BookRequest extends FormRequest
+class BookCreateRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -14,10 +15,7 @@ class BookRequest extends FormRequest
      */
     public function authorize()
     {
-        $book = $this->route('book');
-        $userId = $book ? $book->user_id : \Auth::user()->id;
-        $checkPerm = ($userId == \Auth::user()->id) ? true : false;
-        return $checkPerm;
+        return true;
     }
 
     /**

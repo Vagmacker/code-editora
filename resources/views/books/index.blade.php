@@ -14,6 +14,7 @@
                     <th>ID</th>
                     <th>Title</th>
                     <th>Price</th>
+                    <th>Author</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -23,6 +24,7 @@
                         <td>{{ $book->id }}</td>
                         <td>{{ $book->title }}</td>
                         <td>R$  {{  $book->price }}</td>
+                        <td>{{  $book->author->name }}</td>
                         <td>
                             <ul class="list-inline">
                                 <li>

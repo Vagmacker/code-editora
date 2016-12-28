@@ -9,13 +9,14 @@ class Book extends Model
     protected $fillable = [
         'title',
         'subtitle',
-        'price'
+        'price',
+        'author_id'
     ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user(){
+    public function author(){
 
         return $this->belongsTo(User::class);
 

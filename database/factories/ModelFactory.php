@@ -29,9 +29,16 @@ $factory->define(CodePub\Models\Category::class, function (Faker\Generator $fake
 });
 
 $factory->define(CodePub\Models\Book::class, function (Faker\Generator $faker) {
+
+    $repository = app(\CodePub\Repositories\UserRepository::class);
+
+    /** @var  \Illuminate\Database\Eloquent\Collection $authorId */
+    $authorId = $repository->all()->random()->id;
+
     return [
-        'title' => ucfirst($faker->sentence),
-        'subtitle' => ucfirst($faker->unique()->text(50)),
-        'price' => $faker->randomFloat(2, 0, 1000)
+        'title' => ucfirst($faker->sentence(2)),
+        'subtitle' => ucfirst($faker->unique()->sentence(3)),
+        'price' => $faker->randomFloat(2, 0, 1000),
+        'author_id' => $authorId
     ];
 });
