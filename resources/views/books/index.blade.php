@@ -8,6 +8,13 @@
         </div>
         <br>
         <div class="row">
+            {!! Form::model(compact('search'),['class' => 'form-inline', 'method' => 'GET']) !!}
+                {!! Form::text('search', null, ['class' => 'form-control', 'placeholder' => 'Search', 'style' => 'width:93%']) !!}
+                {!! Button::info('Search')->submit() !!}
+            {!! Form::close() !!}
+        </div>
+        <br>
+        <div class="row">
             <table class="table table-striped table-bordered">
                 <thead>
                 <tr>

@@ -6,6 +6,7 @@ use CodePub\Http\Requests\BookCreateRequest;
 use CodePub\Http\Requests\BookUpdateRequest;
 use CodePub\Models\Book;
 use CodePub\Repositories\BookRepository;
+use Illuminate\Http\Request;
 
 
 class BooksController extends Controller
@@ -28,12 +29,14 @@ class BooksController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->get('search');
         $books = $this->repository->paginate(10);
-        return view('books.index', compact('books'));
+        return view('books.index', compact('books', 'search'));
     }
 
     /**

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
+
     protected $fillable = [
         'title',
         'subtitle',
@@ -20,5 +21,12 @@ class Book extends Model
 
         return $this->belongsTo(User::class);
 
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function categories(){
+        return $this->belongsToMany(Category::class);
     }
 }
