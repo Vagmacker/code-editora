@@ -27,6 +27,7 @@ class AddRelationshipWithUser extends Migration
     public function down()
     {
         Schema::table('books', function (Blueprint $table) {
+            $table->dropForeign('books_author_id_foreign');
             $table->dropColumn('author_id');
         });
     }

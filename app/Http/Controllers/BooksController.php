@@ -6,6 +6,7 @@ use CodePub\Http\Requests\BookCreateRequest;
 use CodePub\Http\Requests\BookUpdateRequest;
 use CodePub\Models\Book;
 use CodePub\Repositories\BookRepository;
+use CodePub\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 
 
@@ -15,15 +16,20 @@ class BooksController extends Controller
      * @var BookRepository
      */
     private $repository;
+    /**
+     * @var CategoryRepository
+     */
+    private $categoryRepository;
 
     /**
      * BooksController constructor.
      * @param BookRepository $repository
      */
-    public function __construct(BookRepository $repository)
+    public function __construct(BookRepository $repository, CategoryRepository $categoryRepository)
     {
 
         $this->repository = $repository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -46,7 +52,8 @@ class BooksController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        $categories = $this->categoryRepository->lists('name', 'id'); //pluck
+        return view('books.create', compact('categories'));
     }
 
     /**
@@ -70,10 +77,12 @@ class BooksController extends Controller
      *
      * @param Book $book
      * @return \Illuminate\Http\Response
+     * @internal param $id
      * @internal param int $id
      */
     public function edit(Book $book)
     {
+        //$books = $this->repository->find($id);
         return view('books.edit', compact('book'));
     }
 
