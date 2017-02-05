@@ -49,6 +49,9 @@
                         <a class="navbar-brand" href="{{ route('books.index') }}">
                             Books
                         </a>
+                        <a class="navbar-brand" href="{{ route('trashed.books.index') }}">
+                            Lixeira
+                        </a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

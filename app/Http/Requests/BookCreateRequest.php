@@ -30,7 +30,7 @@ class BookCreateRequest extends FormRequest
             'subtitle' => 'required|max:255',
             'price' => 'required|numeric',
             'categories' => 'required|array',
-            'categories.*' => 'exists:categories, id'
+            'categories.*' => 'exists:categories,id'
         ];
     }
 

@@ -26,10 +26,10 @@
             {!! Html::closeFormGroup() !!}
 
             {!! Html::openFormGroup(['categories', 'categories.*'], $errors) !!}
-                {!! Form::label('categories[]', 'Categories', ['class' => 'control-label']) !!}
-                {!! Form::select('categories[]', $categories, null, ['class' => 'form-control', 'multiple' => true]) !!}
-                {!! Form::error('categories', $errors) !!}
-                {!! Form::error('categories.*', $errors) !!}
+            {!! Form::label('categories[]', 'Categories', ['class' => 'control-label']) !!}
+            {!! Form::select('categories[]', $categories, null, ['class' => 'form-control', 'multiple' => true]) !!}
+            {!! Form::error('categories', $errors) !!}
+            {!! Form::error('categories.*', $errors) !!}
             {!! Html::closeFormGroup() !!}
 
             <div class="form-group">

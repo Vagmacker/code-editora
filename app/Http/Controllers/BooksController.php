@@ -68,7 +68,7 @@ class BooksController extends Controller
         $data['author_id'] = \Auth::user()->id;
         $this->repository->create($data);
         $url = $request->get('redirect_to', route('books.index'));
-        $request->session()->flash('message', 'Livro cadastrada com sucesso.');
+        $request->session()->flash('message', 'Livro cadastrado com sucesso.');
         return redirect()->to($url);
     }
 
