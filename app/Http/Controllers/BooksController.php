@@ -80,10 +80,12 @@ class BooksController extends Controller
      * @internal param $id
      * @internal param int $id
      */
-    public function edit(Book $book)
+    public function edit($id)
     {
-        //$books = $this->repository->find($id);
-        return view('books.edit', compact('book'));
+        $book = $this->repository->find($id);
+        $this->categoryRepository->withTrashed();
+        $categories = $this->categoryRepository->listsWithMutators('name_trashed', 'id');
+        return view('books.edit', compact('book', 'categories'));
     }
 
     /**

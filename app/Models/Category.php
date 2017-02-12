@@ -22,4 +22,8 @@ class Category extends Model
         return $this->belongsToMany(Book::class);
     }
 
+    public function getNameTrashedAttribute(){
+        return $this->trashed() ? "{$this->name} ( Inativo)" : $this->name;
+    }
+
 }

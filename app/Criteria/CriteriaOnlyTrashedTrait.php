@@ -9,4 +9,9 @@ trait CriteriaOnlyTrashedTrait
         $this->pushCriteria(FindOnlyTrashedCriteria::class);
         return $this;
     }
+
+    public function withTrashed(){
+        $this->pushCriteria(FindWithTrashedCriteria::class);
+        return $this;
+    }
 }

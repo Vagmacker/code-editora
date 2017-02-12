@@ -2,6 +2,7 @@
 
 namespace CodePub\Repositories;
 
+use CodePub\Criteria\CriteriaOnlyTrashedTrait;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CodePub\Models\Category;
@@ -14,6 +15,7 @@ use CodePub\Models\Category;
 class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepository
 {
     use BaseRepositoryTrait;
+    use CriteriaOnlyTrashedTrait;
 
     /**
      * Specify Model class name
@@ -33,5 +35,16 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    /**
+     * @param $column
+     * @param null $key
+     */
+    public function listsWithMutators($column, $key = null)
+    {
+        /** @var Collection $collection */
+        $collection = $this->all();
+        return $collection->pluck($column, $key);
     }
 }
