@@ -1,0 +1,15 @@
+{
+    "name": "vagmacker/codeedubook",
+    "description": "",
+    "authors": [
+        {
+            "name": "João Vagmacker",
+            "email": "vagmackerdsm@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CodeEduBook\\": ""
+        }
+    }
+}

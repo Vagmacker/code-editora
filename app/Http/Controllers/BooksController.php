@@ -4,7 +4,6 @@ namespace CodePub\Http\Controllers;
 
 use CodePub\Http\Requests\BookCreateRequest;
 use CodePub\Http\Requests\BookUpdateRequest;
-use CodePub\Models\Book;
 use CodePub\Repositories\BookRepository;
 use CodePub\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
@@ -75,7 +74,6 @@ class BooksController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Book $book
      * @return \Illuminate\Http\Response
      * @internal param $id
      * @internal param int $id
