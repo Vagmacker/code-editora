@@ -8,45 +8,22 @@
         </div>
         <br>
         <div class="row">
-            <table class="table table-striped table-bordered">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($categories as $category)
-                    <tr>
-                        <td>{{ $category->id }}</td>
-                        <td>{{ $category->name }}</td>
-                        <td>
-                            <ul class="list-inline">
-                                <li>
-                                    <a href="{{ route('categories.edit', ['category' => $category->id]) }}" >Edit</a>
-                                </li>
-                                <li>|</li>
-                                <li>
-                                    <?php $deleteForm = "delete-form-{$loop->index}"; ?>
-                                    <a href="{{ route('categories.destroy', ['category' => $category->id]) }}"
-                                       onclick="event.preventDefault(); document.getElementById('{{ $deleteForm }}').submit();">Delete</a>
-                                    {!! Form::open(['route' => [
-                                        'categories.destroy' , 'category' => $category->id
-                                        ], 'method' => 'DELETE', 'id' => $deleteForm , 'style' => 'display:none']) !!}
-
-                                    {!! Form::close() !!}
-                                </li>
-                            </ul>
-
-
-
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-            {{ $categories->links() }}
+            {!!
+                Table::withContents($categories->items())->striped()->bordered()->callback('Ações', function($fiel, $category){
+                    $linkEdit = route('categories.edit', ['category' => $category->id]);
+                    $linkDestroy = route('categories.destroy', ['category' => $category->id]);
+                    $deletForm = "delete-form-{$category->id}";
+                    $form = Form::open(['route' => ['categories.destroy', 'category' => $category->id], 'method' => 'DELETE', 'id' => $deletForm, 'style' => 'display:none']).
+                    Form::close();
+                    $anchorDestroy = Button::link('Delete')->asLinkTo($linkDestroy)->addAttributes(['onClick' => "event.preventDefault();document.getElementById(\"{$deletForm}\").submit();"]);
+                    return "<ul class=\"list-inline\">".
+                    "<li>".Button::link('Edit')->asLinkTo($linkEdit)."</li".
+                    "<li>|</li>".
+                    "<li>".$anchorDestroy."</li>".
+                    "</ul>". $form;
+                })
+            !!}
+            {{$categories->links()}}
         </div>
     </div>
 @endsection
